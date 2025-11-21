@@ -28,74 +28,61 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 48.0),
             TextField(
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Email',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
+                prefixIcon: Icon(Icons.email_outlined),
               ),
             ),
             const SizedBox(height: 16.0),
             TextField(
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
+                prefixIcon: Icon(Icons.lock_outline),
               ),
             ),
             const SizedBox(height: 24.0),
             ElevatedButton(
               onPressed: () {
-                // Handle login logic
+                // Temporary navigation to home
+                Navigator.of(context).pushReplacementNamed('/home');
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
+                backgroundColor: Colors.deepPurple,
+                foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text('Log In'),
+              child: const Text(
+                'Log In',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(height: 16.0),
             const Text(
               'OR',
               textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey),
             ),
             const SizedBox(height: 16.0),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.login), // Replace with Google icon
+            OutlinedButton.icon(
+              icon: const Icon(Icons.g_mobiledata, size: 28), 
               label: const Text('Sign in with Google'),
               onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black, 
-                backgroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+              style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side: const BorderSide(color: Colors.grey),
                 ),
               ),
             ),
             const SizedBox(height: 12.0),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.apple), // Replace with Apple icon
-              label: const Text('Sign in with Apple'),
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white, 
-                backgroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
             TextButton(
               child: const Text('Do not have an account? Sign up'),
               onPressed: () {
-                // Navigate to sign up screen
+                Navigator.of(context).pushNamed('/signup');
               },
             )
           ],
